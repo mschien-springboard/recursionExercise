@@ -23,20 +23,28 @@ function everyOther(str, idx = 0, newStr = "") {
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {
-
+function isPalindrome(str, idx = 0) {
+  let leftIdx = idx;
+  let rightIdx = str.length - idx - 1;
+  if (leftIdx >= rightIdx) return true;
+  if (str[leftIdx] !== str[rightIdx]) return false;
+  return isPalindrome(str, idx + 1);
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
-function findIndex(arr, val) {
-
+function findIndex(arr, val, idx = 0) {
+  if (idx === arr.length) return -1;
+  if (arr[idx] === val) return idx;
+  return findIndex(arr, val, idx + 1);
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str) {
-
+function revString(str, idx = 0, newStr = "") {
+  if (newStr.length === str.length) return newStr;
+  newStr += str[str.length - idx - 1];
+  return revString(str, idx + 1, newStr);
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
