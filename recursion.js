@@ -1,19 +1,24 @@
 /** product: calculate the product of an array of numbers. */
 
-function product(nums) {
-
+function product(nums, idx = 0) {
+  if (idx === nums.length) return 1;
+  return nums[idx] * product(nums, idx + 1);
 }
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words) {
-
+function longest(words, idx = 0, longestWord = 0) {
+  if (idx === words.length) return longestWord;
+  longestWord = Math.max(words[idx].length, longestWord);
+  return longest(words, idx + 1, longestWord);
 }
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {
-
+function everyOther(str, idx = 0, newStr = "") {
+  if (idx >= str.length) return newStr;
+  newStr += str[idx];
+  return everyOther(str, idx + 2, newStr);
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
@@ -40,12 +45,13 @@ function gatherStrings(obj) {
 
 }
 
+// Further Study:
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
-function binarySearch(arr, val) {
+// function binarySearch(arr, val) {
 
-}
+// }
 
 module.exports = {
   product,
