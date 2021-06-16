@@ -50,16 +50,21 @@ function revString(str, idx = 0, newStr = "") {
 /** gatherStrings: given an object, return an array of all of the string values. */
 
 function gatherStrings(obj) {
-
+  let stringArr = [];
+  for (let key in obj) {
+    if (typeof obj[key] === "string") stringArr.push(obj[key]);
+    if (typeof obj[key] === "object") stringArr.push(...gatherStrings(obj[key]));
+  }
+  return stringArr;
 }
 
 // Further Study:
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
-// function binarySearch(arr, val) {
+function binarySearch(arr, val) {
 
-// }
+}
 
 module.exports = {
   product,
